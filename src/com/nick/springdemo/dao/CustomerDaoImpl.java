@@ -15,12 +15,12 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	public List<Customer> getCustomers() {
 		Session session = sessionFactory.getCurrentSession();
 		Query<Customer> query = session.createQuery("from Customer order by lastName", Customer.class);
-		
+
 		List<Customer> customers = query.getResultList();
 		return customers;
 	}
@@ -28,7 +28,6 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public void saveCustomer(Customer customer) {
 		Session session = sessionFactory.getCurrentSession();
-		
 		session.saveOrUpdate(customer);
 	}
 
@@ -36,6 +35,14 @@ public class CustomerDaoImpl implements CustomerDao {
 	public Customer getCustomer(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		return session.get(Customer.class, id);
+	}
+
+	@Override
+	public void deleteCustomer(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		session.createQuery("delete from Customer where id=:custId")
+			.setParameter("custId", id)
+			.executeUpdate();
 	}
 
 }

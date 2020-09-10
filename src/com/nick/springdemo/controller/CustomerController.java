@@ -26,11 +26,8 @@ public class CustomerController {
 	
 	@GetMapping("/list")
 	public String listCustomers(Model model) {
-		
 		List<Customer> list = customerService.getCustomers();
-		System.out.println(list);
 		model.addAttribute("customers", list);
-		
 		return "list-customers";
 	}
 	
@@ -57,5 +54,11 @@ public class CustomerController {
 	public String showFormForUpdate(@RequestParam("customerId") int id, Model model) {
 		model.addAttribute("customer", customerService.getCustomer(id));
 		return "customer-form";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteCustomer(@RequestParam("customerId") int id){
+		customerService.deleteCustomer(id);
+		return "redirect:/customer/list";
 	}
 }
