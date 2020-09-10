@@ -19,6 +19,10 @@
 			<input type="button" value="Add Customer" 
 				onclick="window.location.href='showFormForAdd'; return false;"
 				class="add-button">
+			<form:form action="search" method="GET">
+                Search customer: <input type="text" name="searchName" />
+                <input type="submit" value="Search" class="add-button" />
+         	</form:form>
 			<table>
 				<tr>
 					<th>First Name</th>
