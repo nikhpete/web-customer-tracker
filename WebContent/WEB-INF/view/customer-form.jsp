@@ -27,10 +27,13 @@
 					<tr>
 						<td><label>Last Name :</label></td>
 						<td><form:input path="lastName"/></td>
+						<td><form:errors path="lastName" cssClass="error"/></td>
+						
 					</tr>
 					<tr>
 						<td><label>Email :</label></td>
 						<td><form:input path="email"/></td>
+						<td><form:errors path="email" cssClass="error"/></td>
 					</tr>
 					<tr>
 						<td><label></label></td>
